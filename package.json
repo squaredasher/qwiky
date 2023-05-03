@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build --filter='./packages/**'",
+    "dev": "turbo run dev --filter='./packages/**'",
+    "play": "turbo run dev --filter='./playground/'",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@builder.io/qwik": "^1.0.0",
+    "@storybook/addon-essentials": "7.0.7",
+    "@storybook/addon-links": "7.0.7",
+    "@storybook/blocks": "7.0.7",
+    "@storybook/builder-vite": "7.0.7",
+    "@storybook/html": "7.0.7",
+    "@storybook/html-vite": "7.0.7",
+    "@types/jsdom": "^21.1.1",
+    "eslint": "^8.39.0",
+    "esno": "^0.16.3",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.0",
+    "storybook": "7.0.7",
+    "storybook-framework-qwik": "0.2.0",
+    "turbo": "^1.9.3",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.3",
+    "vite-plugin-dts": "^2.3.0",
+    "vitest": "^0.30.1"
+  }
+}
