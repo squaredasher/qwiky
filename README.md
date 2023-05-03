@@ -2,8 +2,7 @@
 
 > **This is a WIP, please don't use it in production a lot of things will break as we move forward with the development.**
 
-Qwiky is a collection of utilities, hooks and components for building awesome apps with [Qwik](https://qwik.builder.io/)
-
+Qwiky is a collection of hooks, utilities, and components for building awesome apps with [Qwik](https://qwik.builder.io/)
 
 ## 🦄 Hooks
 Collection of essential Qwik Hooks
