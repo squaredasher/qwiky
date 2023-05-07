@@ -16,10 +16,6 @@ pnpm add @qwiky/hooks
 yarn add @qwiky/hooks
 ```
 
-## 🎨 TODO: Components
-UI component Library
-
-
 # 🏗️ Contribute
 
 1. Fork it!
