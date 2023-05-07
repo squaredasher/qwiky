@@ -8,7 +8,7 @@ export type Fn = QRL<() => void>
 /**
  * Any function
  */
-export type AnyFn = QRL<(...args: any[]) => any>
+export type AnyFn = (...args: any[]) => any
 
 /**
  * A signal that allow to set null or undefined

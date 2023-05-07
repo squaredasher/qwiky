@@ -4,7 +4,7 @@ import type { AnyFn, MaybeSignal, MaybeSignalOrGetter } from './type'
 
 export function isSignal<T>(r: Signal<T> | unknown): r is Signal<T>
 export function isSignal(r: any): r is Signal {
-  return !!(r && typeof r === 'object' && hasOwn(r, 'untrackedValue') && hasOwn(r, 'value'))
+  return !!(r && typeof r === 'object' && hasOwn(r, 'untrackedValue'))
 }
 
 export function isDef<T = any>(val?: T): val is T {

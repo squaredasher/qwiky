@@ -1,11 +1,12 @@
-import { component$, useSignal, useStylesScoped$ } from "@builder.io/qwik";
-import { useIntersectionObserver } from "@qwiky/hooks";
+import { component$, useStylesScoped$, useSignal } from "@builder.io/qwik";
+import { useIntersectionObserver } from '../index'
+
 import styles from './styles.css?inline';
 
-export default component$(() => {
+const Test = component$(() => {
   useStylesScoped$(styles);
-  const targetRef = useSignal<HTMLDivElement>()
-  const rootRef = useSignal<HTMLDivElement>()
+  const targetRef = useSignal<HTMLElement>()
+  const rootRef = useSignal<HTMLElement>()
   const entry = useIntersectionObserver(targetRef, {
     root: rootRef,
     threshold: 1,
@@ -29,3 +30,12 @@ export default component$(() => {
     </div>
   )
 })
+
+export default {
+  title: "Hooks",
+  component: Test,
+};
+
+export const UseIntersectionObserver = {
+  name: "useIntersectionObserver",
+};

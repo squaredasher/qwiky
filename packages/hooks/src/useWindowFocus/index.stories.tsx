@@ -1,7 +1,13 @@
 import { component$ } from "@builder.io/qwik";
+import { useWindowFocus } from ".";
 
 const Test = component$(() => {
-  return <>Hello</>
+  const focused = useWindowFocus();
+  return (
+    <div>
+      <p>{focused.value ? 'Click somewhere outside of the document to unfocus' : 'Tab is unfocused'}</p>
+    </div>
+  )
 });
 
 export default {

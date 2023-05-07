@@ -1,7 +1,13 @@
 import { component$ } from "@builder.io/qwik";
+import { useOnline } from ".";
 
 const Test = component$(() => {
-  return <>Hello</>
+  const online = useOnline();
+  return (
+    <>
+      <p>Status: {online.value ? 'Online' : 'Offline'}</p>
+    </>
+  )
 });
 
 export default {

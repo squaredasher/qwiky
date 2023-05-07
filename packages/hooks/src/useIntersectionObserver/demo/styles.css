@@ -1,0 +1,20 @@
+.root {
+  border: 2px dashed #ccc;
+  height: 200px;
+  margin: 2rem 1rem;
+  overflow-y: scroll;
+}
+.notice {
+  text-align: center;
+  padding: 2em 0;
+  margin-bottom: 300px;
+  font-style: italic;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+.target {
+  border: 2px dashed black;
+  padding: 10px;
+  max-height: 150px;
+  margin: 0 2rem 400px;
+}

@@ -12,24 +12,8 @@ import {
   useMouse,
 } from "@qwiky/hooks";
 
-function usePrevious<T>(value: Signal<T>): Signal<T | undefined> {
-  const ref = useSignal<T>();
-
-  untrack
-
-  useTask$(({ track }) => {
-    track(() => {
-      ref.value = value.value;
-      return value.value;
-    });
-  });
-
-  return ref;
-}
-
 export default component$(() => {
   const test = useSignal("test");
-  const previous = usePrevious(test);
   const hoverableRef = useSignal<HTMLButtonElement>();
   const boundRef = useSignal<HTMLElement>();
   const network = useNetwork();
@@ -44,15 +28,15 @@ export default component$(() => {
 
   return (
     <>
-      <textarea>{JSON.stringify(network)}</textarea>
-      <div>{isIdle.value ? "" : "not"} idle</div>
+      <textarea>{ JSON.stringify(network, null 2) }</textarea>
+      <div>{isIdle.isIdle.value ? "" : "not"} idle</div>
 
       <button ref={hoverableRef}>Hover over me</button>
       <div>button {hovered.value ? "hovered" : "not hovered"}</div>
 
       <input type="text" bind:value={test} />
       <div>
-        {lastChanged.value} {test.value} {previous.value}
+        {lastChanged.value} {test.value}
       </div>
 
       <div>Selected: {selectedText.text.value || "nothing"}</div>

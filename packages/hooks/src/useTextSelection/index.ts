@@ -1,4 +1,4 @@
-import { $, component$, noSerialize, useComputed$, useOnDocument, useOnWindow, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { $, noSerialize, useComputed$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
 import type { NoSerialize } from '@builder.io/qwik'
 
 function getRangesFromSelection(selection: Selection) {
@@ -14,8 +14,8 @@ function getRangesFromSelection(selection: Selection) {
 export function useTextSelection() {
   const selection = useSignal<NoSerialize<Selection>>()
   const text = useComputed$(() => selection.value?.toString() ?? '')
-  const ranges = useComputed$<Range[]>(() => selection.value ? getRangesFromSelection(selection.value) : [])
-  const rects = useComputed$(() => ranges.value.map(range => range.getBoundingClientRect()))
+  const ranges = noSerialize(useComputed$<Range[]>(() => selection.value ? getRangesFromSelection(selection.value) : []))
+  const rects = useComputed$(() => ranges?.value.map(range => range.getBoundingClientRect()))
 
   const onSelectionChange = $(() => {
     selection.value = noSerialize(undefined)
