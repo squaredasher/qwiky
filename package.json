@@ -9,11 +9,13 @@
     "lint:fix": "turbo run lint:fix",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
+    "changeset": "changeset",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
     "@builder.io/qwik": "^1.0.0",
+    "@changesets/cli": "^2.26.1",
     "@storybook/addon-essentials": "7.0.9",
     "@storybook/addon-links": "7.0.9",
     "@storybook/blocks": "7.0.9",

@@ -7,7 +7,7 @@ Qwiky is a collection of hooks, utilities, and components for [Qwik](https://qwi
 ## 🦄 Hooks
 Collection of essential Qwik Hooks
 
-## 📦 Getting Started - (Not working at the moment)
+## 📦 Getting Started
 ```shell
 npm install @qwiky/hooks
 # or

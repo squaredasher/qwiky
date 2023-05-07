@@ -40,5 +40,6 @@
   },
   "dependencies": {
     "@qwiky/hooks": "workspace:*"
-  }
+  },
+  "version": null
 }
