@@ -1,5 +1,4 @@
-import { Signal, untrack } from "@builder.io/qwik";
-import { component$, useSignal, useTask$ } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import {
   useNetwork,
@@ -10,13 +9,15 @@ import {
   useTextSelection,
   useMediaQuery,
   useMouse,
+  useWindowSize,
 } from "@qwiky/hooks";
 
 export default component$(() => {
   const test = useSignal("test");
   const hoverableRef = useSignal<HTMLButtonElement>();
   const boundRef = useSignal<HTMLElement>();
-  const network = useNetwork();
+  const { width, height } = useWindowSize();
+  // const network = useNetwork();
   const isIdle = useIdle(1000);
   const hovered = useHover(hoverableRef);
   const lastChanged = useLastChanged(test);
@@ -28,7 +29,8 @@ export default component$(() => {
 
   return (
     <>
-      <textarea>{ JSON.stringify(network, null 2) }</textarea>
+      {/* <textarea>{ JSON.stringify(network, null 2) }</textarea> */}
+      <div>Window size: {width.value} x {height.value}</div>
       <div>{isIdle.isIdle.value ? "" : "not"} idle</div>
 
       <button ref={hoverableRef}>Hover over me</button>

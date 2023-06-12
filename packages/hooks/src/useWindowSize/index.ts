@@ -1,4 +1,4 @@
-import { $, useOnWindow, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { $, useOnDocument, useOnWindow, useSignal, useVisibleTask$ } from '@builder.io/qwik'
 
 export interface UseWindowSizeOptions {
   initialWidth?: number
@@ -44,8 +44,6 @@ export function useWindowSize(options: UseWindowSizeOptions = {}) {
 
   useVisibleTask$(() => {
     updateSize()
-  }, {
-    strategy: 'intersection-observer',
   })
 
   return { width, height }
