@@ -1,7 +1,7 @@
 # 🦄 Qwiky Hooks
 Collection of essential Qwik Hooks
 
-## 📦 Getting Started - (Not working at the moment)
+## 📦 Getting Started
 ```shell
 npm install @qwiky/hooks
 # or
