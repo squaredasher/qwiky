@@ -40,11 +40,11 @@ export function useWindowSize(options: UseWindowSizeOptions = {}) {
     }
   })
 
-  useOnWindow('resize', updateSize)
-
   useVisibleTask$(() => {
     updateSize()
   })
+
+  useOnWindow('resize', updateSize)
 
   return { width, height }
 }

@@ -1,5 +1,6 @@
 import type { Signal } from '@builder.io/qwik'
-import { $, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { $, useSignal, useTask$ } from '@builder.io/qwik'
+import { isBrowser, isServer } from '@builder.io/qwik/build'
 
 export function useHover<T extends HTMLElement = HTMLDivElement>(
   ref: Signal<T | undefined>,
@@ -9,14 +10,16 @@ export function useHover<T extends HTMLElement = HTMLDivElement>(
   const onMouseEnter = $(() => hover.value = true)
   const onMouseLeave = $(() => hover.value = false)
 
-  useVisibleTask$(({ cleanup }) => {
-    if (ref.value) {
-      ref.value.addEventListener('mouseenter', onMouseEnter)
-      ref.value.addEventListener('mouseleave', onMouseLeave)
+  useTask$(({ cleanup, track }) => {
+    const element = track(() => ref.value)
+
+    if (element) {
+      element.addEventListener('mouseenter', onMouseEnter)
+      element.addEventListener('mouseleave', onMouseLeave)
 
       cleanup(() => {
-        ref.value?.removeEventListener('mouseenter', onMouseEnter)
-        ref.value?.removeEventListener('mouseleave', onMouseLeave)
+        element?.removeEventListener('mouseenter', onMouseEnter)
+        element?.removeEventListener('mouseleave', onMouseLeave)
       })
     }
   })
