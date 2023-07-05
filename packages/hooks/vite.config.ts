@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { qwikVite } from '@builder.io/qwik/optimizer';
-import dtsPlugin from 'vite-plugin-dts'
+import dts from 'vite-plugin-dts'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig(() => {
   return {
@@ -14,14 +15,16 @@ export default defineConfig(() => {
       },
     },
     plugins: [
-      dtsPlugin({
-        include: ['./src/**/*.ts', './src/**/*.tsx'],
-        skipDiagnostics: false,
-        staticImport: true,
-        outputDir: ['./dist/types'],
-        cleanVueFileName: false,
+      tsconfigPaths(),
+      qwikVite(),
+      dts({
+        cleanVueFileName: true,
+        copyDtsFiles: true,
+        outDir: './dist/types',
+        include: [
+          './src'
+        ],
       }),
-      qwikVite()
     ],
   };
 });

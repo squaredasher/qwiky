@@ -1,7 +1,6 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import {
-  useNetwork,
   useIdle,
   useHover,
   useLastChanged,

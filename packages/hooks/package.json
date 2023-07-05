@@ -2,7 +2,7 @@
   "name": "@qwiky/hooks",
   "version": "0.0.1",
   "main": "./dist/index.qwik.mjs",
-  "qwik": "./dits/index.qwik.mjs",
+  "qwik": "./dist/index.qwik.mjs",
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
@@ -41,7 +41,8 @@
     "prettier": "2.8.8",
     "typescript": "5.1.3",
     "undici": "5.22.1",
-    "vite": "4.3.9"
+    "vite": "4.3.9",
+    "vite-tsconfig-paths": "4.2.0"
   },
   "publishConfig": {
     "access": "public"
