@@ -1,4 +1,4 @@
-import { $, noSerialize, useComputed$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { $, noSerialize, useComputed$, useOnDocument, useSignal, useVisibleTask$ } from '@builder.io/qwik'
 import type { NoSerialize } from '@builder.io/qwik'
 
 function getRangesFromSelection(selection: Selection) {
@@ -14,22 +14,15 @@ function getRangesFromSelection(selection: Selection) {
 export function useTextSelection() {
   const selection = useSignal<NoSerialize<Selection>>()
   const text = useComputed$(() => selection.value?.toString() ?? '')
-  const ranges = noSerialize(useComputed$<Range[]>(() => selection.value ? getRangesFromSelection(selection.value) : []))
+  const ranges = useComputed$<Range[]>(() => selection.value ? getRangesFromSelection(selection.value) : [])
+  // eslint-disable-next-line qwik/valid-lexical-scope
   const rects = useComputed$(() => ranges?.value.map(range => range.getBoundingClientRect()))
 
-  const onSelectionChange = $(() => {
+  useOnDocument('selectionchange', $(() => {
     selection.value = noSerialize(undefined)
     if (window)
       selection.value = noSerialize(window.getSelection() || undefined)
-  })
-
-  useVisibleTask$(({ track, cleanup }) => {
-    track(() => selection.value)
-
-    document.addEventListener('selectionchange', onSelectionChange)
-
-    cleanup(() => document.removeEventListener('selectionchange', onSelectionChange))
-  })
+  }))
 
   return {
     text,

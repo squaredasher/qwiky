@@ -1,5 +1,5 @@
 import type { Signal } from '@builder.io/qwik'
-import { useSignal } from '@builder.io/qwik'
+import { useSignal, } from '@builder.io/qwik'
 import type { AnyFn, MaybeSignal, MaybeSignalOrGetter } from './type'
 
 export function isSignal<T>(r: Signal<T> | unknown): r is Signal<T>

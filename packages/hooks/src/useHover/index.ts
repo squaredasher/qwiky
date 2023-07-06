@@ -11,6 +11,7 @@ export function useHover<T extends HTMLElement = HTMLDivElement>(
 
   useVisibleTask$(({ cleanup }) => {
 
+
     if (ref.value) {
       ref.value.addEventListener('mouseenter', onMouseEnter)
       ref.value.addEventListener('mouseleave', onMouseLeave)

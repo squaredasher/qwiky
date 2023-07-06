@@ -9,16 +9,19 @@ import {
   useMediaQuery,
   useMouse,
   useWindowSize,
+  useFocus,
 } from "@qwiky/hooks";
 
 export default component$(() => {
   const test = useSignal("test");
   const hoverableRef = useSignal<HTMLButtonElement>();
+  const focusableRef = useSignal<HTMLInputElement>();
   const boundRef = useSignal<HTMLElement>();
   const { width, height } = useWindowSize();
   // const network = useNetwork();
   const isIdle = useIdle(1000);
   const hovered = useHover(hoverableRef);
+  const { focused } = useFocus(focusableRef);
   const lastChanged = useLastChanged(test);
   const selectedText = useTextSelection();
   const isDark = useMediaQuery("(prefers-color-scheme: dark)");
@@ -35,9 +38,13 @@ export default component$(() => {
       <button ref={hoverableRef}>Hover over me</button>
       <div>button {hovered.value ? "hovered" : "not hovered"}</div>
 
-      <input type="text" bind:value={test} />
+      <input type="text" bind:value={test} ref={focusableRef} />
       <div>
         {lastChanged.value} {test.value}
+      </div>
+
+      <div>
+        {focused.value ? "focused" : "not focused"}
       </div>
 
       <div>Selected: {selectedText.text.value || "nothing"}</div>
